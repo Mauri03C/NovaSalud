@@ -1,0 +1,255 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 175 84% 32%; /* Color verde turquesa para farmacias */
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 187 75% 95%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 187 90% 90%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 175 84% 32%;
+
+    --radius: 0.5rem;
+    
+    --sidebar-background: var(--card);
+    --sidebar-foreground: var(--card-foreground);
+    --sidebar-border: var(--border);
+    --sidebar-primary: var(--primary);
+    --sidebar-primary-foreground: var(--primary-foreground);
+    --sidebar-accent: var(--accent);
+    --sidebar-accent-foreground: var(--accent-foreground);
+    --sidebar-ring: var(--ring);
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 175 84% 32%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 175 84% 32%;
+    
+    --sidebar-background: var(--card);
+    --sidebar-foreground: var(--card-foreground);
+    --sidebar-border: var(--border);
+    --sidebar-primary: var(--primary);
+    --sidebar-primary-foreground: var(--primary-foreground);
+    --sidebar-accent: var(--accent);
+    --sidebar-accent-foreground: var(--accent-foreground);
+    --sidebar-ring: var(--ring);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground transition-colors duration-300;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  
+  #root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/* Estilos para las tarjetas del dashboard */
+.dashboard-card {
+  @apply bg-card text-card-foreground rounded-lg shadow-md p-6 transition-all hover:shadow-lg border border-border;
+}
+
+/* Título de secciones */
+.section-title {
+  @apply text-2xl font-bold text-foreground mb-6;
+}
+
+/* Contenedor de tablas con scroll horizontal */
+.table-container {
+  @apply overflow-x-auto w-full rounded-md;
+}
+
+/* Estilos para tablas de datos */
+.data-table {
+  @apply min-w-full divide-y divide-border;
+}
+
+.data-table thead {
+  @apply bg-secondary;
+}
+
+.data-table th {
+  @apply px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider;
+}
+
+.data-table tbody {
+  @apply bg-card divide-y divide-border;
+}
+
+.data-table td {
+  @apply px-6 py-4 whitespace-nowrap text-sm text-muted-foreground;
+}
+
+/* Estilos para badges/etiquetas */
+.badge {
+  @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium;
+}
+
+.badge-green {
+  @apply bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100;
+}
+
+.badge-red {
+  @apply bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-100;
+}
+
+.badge-yellow {
+  @apply bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-100;
+}
+
+.badge-blue {
+  @apply bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100;
+}
+
+/* Estilos para tarjetas estadísticas */
+.stat-card {
+  @apply dashboard-card flex flex-col;
+}
+
+.stat-value {
+  @apply text-3xl font-bold text-foreground;
+}
+
+.stat-label {
+  @apply text-sm text-muted-foreground;
+}
+
+.stat-change {
+  @apply flex items-center text-sm mt-2;
+}
+
+.stat-change-positive {
+  @apply text-green-600 dark:text-green-400;
+}
+
+.stat-change-negative {
+  @apply text-red-600 dark:text-red-400;
+}
+
+/* Estilos específicos para los botones */
+button.action-button {
+  @apply bg-primary text-primary-foreground rounded-lg flex items-center justify-center px-4 py-2 transition-colors 
+         hover:bg-primary/80 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2;
+}
+
+button.secondary-button {
+  @apply border border-input rounded-lg px-4 py-2 transition-colors bg-background
+         hover:bg-accent hover:text-accent-foreground focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2;
+}
+
+/* Estilo para campos de entrada */
+.input-field {
+  @apply w-full p-2 border rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50 bg-background text-foreground border-input;
+}
+
+/* Animación para los elementos interactivos */
+.interactive-element {
+  @apply transition-all duration-200 hover:scale-105;
+}
+
+/* Estilo para las notificaciones o alertas */
+.alert-message {
+  @apply p-4 rounded-lg mb-4 text-sm;
+}
+
+.alert-message.info {
+  @apply bg-blue-50 text-blue-800 dark:bg-blue-900 dark:text-blue-100;
+}
+
+.alert-message.warning {
+  @apply bg-yellow-50 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-100;
+}
+
+.alert-message.error {
+  @apply bg-red-50 text-red-800 dark:bg-red-900 dark:text-red-100;
+}
+
+.alert-message.success {
+  @apply bg-green-50 text-green-800 dark:bg-green-900 dark:text-green-100;
+}
+
+/* Estilos para resolver el problema de superposición */
+.navbar-container {
+  @apply sticky top-0 z-50 bg-white dark:bg-gray-900 w-full border-b border-border;
+}
+
+.main-content {
+  @apply flex flex-1 flex-col pt-0;
+}
+
+.page-container {
+  @apply pt-2;
+}
+
+.mobile-nav-fixed {
+  @apply fixed top-0 left-0 right-0 z-50 bg-white dark:bg-gray-900 border-b border-border;
+}
+
+.sidebar-desktop {
+  @apply w-64 min-h-screen hidden md:block;
+}
+
+.sidebar-mobile {
+  @apply fixed inset-y-0 left-0 transform transition-transform duration-300 ease-in-out z-40 bg-white dark:bg-gray-900 border-r border-border w-64;
+}
